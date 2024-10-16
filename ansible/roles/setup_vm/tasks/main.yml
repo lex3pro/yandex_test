@@ -1,0 +1,18 @@
+---
+# tasks file for roles/setup_vm
+- name: Change hostname
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}"
+
+- name: Install standard packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - net-tools
+    - dnsutils
+    - wget
+    - curl
+    - mc
+    - rsync

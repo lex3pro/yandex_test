@@ -1,0 +1,6 @@
+[proxy]
+vm-instance-2 ansible_host=10.11.0.19 
+
+[backend]
+vm-instance-3 ansible_host=10.11.0.15
+vm-instance-1 ansible_host=10.11.0.8

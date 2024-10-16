@@ -1,0 +1,17 @@
+---
+# tasks file for roles/backend_nginx
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Create custom index.html
+  ansible.builtin.copy:
+    content: |
+      Hello from {{ inventory_hostname }}!
+    dest: /var/www/html/index.html
+
+- name: Restart Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted

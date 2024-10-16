@@ -1,0 +1,12 @@
+---
+- hosts: proxy
+  become: yes
+  roles:
+    - setup_vm
+    - proxy_nginx
+
+- hosts: backend
+  become: yes
+  roles:
+    - setup_vm
+    - backend_nginx

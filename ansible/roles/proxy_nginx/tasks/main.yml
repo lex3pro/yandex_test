@@ -1,0 +1,16 @@
+---
+# tasks file for roles/proxy_nginx
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Configure Nginx as reverse proxy
+  ansible.builtin.template:
+    src: nginx_proxy.j2
+    dest: /etc/nginx/sites-available/default
+
+- name: Restart Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
